@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_convert;
@@ -52,10 +54,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void convert (View view){
         String[] text = this.input_non_ps.getText().toString().split("\n");
+        int len_max = Integer.parseInt(this.dropdown.getSelectedItem().toString());
+        int len_tr = text.length/len_max;
+        String res ="";
 
+        LinkedList<String> nouveau = new LinkedList<>();
+        for (int k=0;){
+            nouveau.add(a);
+        }
+
+
+        for (int k=0; k<=len_max;k++){
+            int a;
+            //res += this.put_ps(text[k*len_tr:(k+1)*len_tr]);
+        }
     }
 
-    public void put_ps (String text){
+    public void put_ps (LinkedList<String> text){
 
     }
 

@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.btn_trad = findViewById(R.id.button);
         this.input_non_ps = findViewById(R.id.editText);
+        this.input_ps = findViewById(R.id.editText2);
         this.dropdown=findViewById(R.id.spinner);
     }
 
@@ -36,14 +37,21 @@ public class MainActivity extends AppCompatActivity {
         if (current_nblines!=this.nblines){
             this.nblines = current_nblines;
             ArrayList<String> list = new ArrayList<>();
-            list.add("1");
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this , R.layout.support_simple_spinner_dropdown_item ,list);
             this.dropdown.setAdapter(adapter);
+            ArrayList<String> nouv = new ArrayList<>();
+            ArrayList<Integer> divis = diviseurs(this.nblines/2);
+            for (Integer a:divis){
+                nouv.add(String.valueOf(a));
+            }
+           ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this , R.layout.support_simple_spinner_dropdown_item ,nouv);
+            this.dropdown.setAdapter(adapter2);
         }
 
     }
 
     public void convert (View view){
+        String[] text = this.input_non_ps.getText().toString().split("\n");
 
     }
 
@@ -55,7 +63,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void diviseurs (View view, int n){
-
+    public ArrayList<Integer> diviseurs (int n){
+        ArrayList<Integer> liste = new ArrayList<>();
+        for (int i=0 ; i<(n+1) ;i++ ){
+            if (i!=0 && n%i==0){
+                liste.add(i);
+            }
+        }
+        return liste;
     }
 }
+
+
+
+//    String[] text = this.input_non_ps.getText().toString().split("\n");
+//        this.input_ps.setText("");
+//                for (String s : text) {
+//                this.input_ps.getText().append(s);
+//                this.input_ps.getText().append("\n");
+//                }

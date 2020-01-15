@@ -5,9 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     Button btn_convert;
@@ -24,14 +27,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         this.btn_trad = findViewById(R.id.button);
         this.input_non_ps = findViewById(R.id.editText);
-        //this.input_ps.findViewById();
-        //this.dropdown.findViewById();
+        this.dropdown=findViewById(R.id.spinner);
     }
 
     public void change_diviseurs(View view){
         String[] text = this.input_non_ps.getText().toString().split("\n");
-        int a = text.length;
-        this.input_non_ps.setText(String.valueOf(a));
+        int current_nblines = text.length;
+        if (current_nblines!=this.nblines){
+            this.nblines = current_nblines;
+            ArrayList<String> list = new ArrayList<>();
+            list.add("1");
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this , R.layout.support_simple_spinner_dropdown_item ,list);
+            this.dropdown.setAdapter(adapter);
+        }
+
     }
 
     public void convert (View view){

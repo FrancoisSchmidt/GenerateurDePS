@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name='Generateur de PS'
+rootProject.name='Generateur de ps'

@@ -16,13 +16,11 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
-    Button btn_convert;
     Button btn_trad;
     EditText input_non_ps;
     EditText input_ps;
     Spinner dropdown;
     int nblines ;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,16 +62,14 @@ public class MainActivity extends AppCompatActivity {
            ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this , R.layout.support_simple_spinner_dropdown_item ,nouv);
             this.dropdown.setAdapter(adapter2);
         }
-
     }
 
     public void convert (View view){
-        if (this.input_non_ps.getText().toString().length()>0) {
+        if (this.input_non_ps.getText().toString().contains("\n")) {
             String[] text = this.input_non_ps.getText().toString().split("\n");
             int len_max = Integer.parseInt(this.dropdown.getSelectedItem().toString());
             int len_tr = text.length / len_max;
             String res = "";
-
             for (int k = 0; k < len_max; k++) {
                 LinkedList<String> nouveau = new LinkedList<>();
                 for (int a = k * len_tr; a < (k + 1) * len_tr; a++) {
@@ -107,8 +103,6 @@ public class MainActivity extends AppCompatActivity {
         return res;
     }
 
-
-
     public ArrayList<Integer> diviseurs (int n){
         ArrayList<Integer> liste = new ArrayList<>();
         for (int i=0 ; i<(n+1) ;i++ ){
@@ -119,12 +113,3 @@ public class MainActivity extends AppCompatActivity {
         return liste;
     }
 }
-
-
-
-//    String[] text = this.input_non_ps.getText().toString().split("\n");
-//        this.input_ps.setText("");
-//                for (String s : text) {
-//                this.input_ps.getText().append(s);
-//                this.input_ps.getText().append("\n");
-//                }

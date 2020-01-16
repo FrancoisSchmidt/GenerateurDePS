@@ -1,7 +1,6 @@
 package com.example.generateurdeps;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -10,7 +9,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -112,4 +110,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return liste;
     }
+
 }

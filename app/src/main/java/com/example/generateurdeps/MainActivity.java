@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -31,9 +32,23 @@ public class MainActivity extends AppCompatActivity {
         this.input_non_ps = findViewById(R.id.editText);
         this.input_ps = findViewById(R.id.editText2);
         this.dropdown=findViewById(R.id.spinner);
+        this.input_non_ps.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                change_diviseurs();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
     }
 
-    public void change_diviseurs(View view){
+    public void change_diviseurs(){
         String[] text = this.input_non_ps.getText().toString().split("\n");
         int current_nblines = text.length;
         if (current_nblines!=this.nblines){
@@ -56,27 +71,41 @@ public class MainActivity extends AppCompatActivity {
         String[] text = this.input_non_ps.getText().toString().split("\n");
         int len_max = Integer.parseInt(this.dropdown.getSelectedItem().toString());
         int len_tr = text.length/len_max;
-        String res ="";
+       String res = "";
 
-        LinkedList<String> nouveau = new LinkedList<>();
-        for (int k=0;){
-            nouveau.add(a);
+        for (int k=0; k<len_max ; k++){
+            LinkedList<String> nouveau = new LinkedList<>();
+            for (int a=k*len_tr ; a<(k+1)*len_tr ; a++){
+                nouveau.add(text[a]);
+            }
+            res += this.put_ps(nouveau);
         }
+        this.input_ps.setText(res);
+    }
 
-
-        for (int k=0; k<=len_max;k++){
-            int a;
-            //res += this.put_ps(text[k*len_tr:(k+1)*len_tr]);
+    public String put_ps (LinkedList<String> text){
+        int n_txt = text.size();
+        String res = "";
+        for (int k=0;k<n_txt/2;k++) {
+            for (int j = 1; j <= k + 1; j++){
+                res += "P";
+            }
+            res += "S : ";
+            res+= text.get(k);
+            res+='\n';
         }
+        for (int k=n_txt/2;k<n_txt;k++){
+            for (int j=1;j<=n_txt-k;j++){
+                res+= "P";
+            }
+            res += "S : ";
+            res += text.get(k);
+            res += "\n";
+        }
+        return res;
     }
 
-    public void put_ps (LinkedList<String> text){
 
-    }
-
-    public void trad (View view){
-
-    }
 
     public ArrayList<Integer> diviseurs (int n){
         ArrayList<Integer> liste = new ArrayList<>();

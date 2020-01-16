@@ -68,19 +68,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void convert (View view){
-        String[] text = this.input_non_ps.getText().toString().split("\n");
-        int len_max = Integer.parseInt(this.dropdown.getSelectedItem().toString());
-        int len_tr = text.length/len_max;
-       String res = "";
+        if (this.input_non_ps.getText().toString().length()>0) {
+            String[] text = this.input_non_ps.getText().toString().split("\n");
+            int len_max = Integer.parseInt(this.dropdown.getSelectedItem().toString());
+            int len_tr = text.length / len_max;
+            String res = "";
 
-        for (int k=0; k<len_max ; k++){
-            LinkedList<String> nouveau = new LinkedList<>();
-            for (int a=k*len_tr ; a<(k+1)*len_tr ; a++){
-                nouveau.add(text[a]);
+            for (int k = 0; k < len_max; k++) {
+                LinkedList<String> nouveau = new LinkedList<>();
+                for (int a = k * len_tr; a < (k + 1) * len_tr; a++) {
+                    nouveau.add(text[a]);
+                }
+                res += this.put_ps(nouveau);
             }
-            res += this.put_ps(nouveau);
+            this.input_ps.setText(res);
         }
-        this.input_ps.setText(res);
     }
 
     public String put_ps (LinkedList<String> text){

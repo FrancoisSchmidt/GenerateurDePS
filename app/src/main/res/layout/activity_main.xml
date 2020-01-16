@@ -8,7 +8,7 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="390dp"
+        android:layout_width="0dp"
         android:layout_height="157dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -43,14 +43,14 @@
         android:layout_width="165dp"
         android:layout_height="34dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="390dp"
+        android:layout_width="0dp"
         android:layout_height="157dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
@@ -68,8 +68,8 @@
         android:id="@+id/textView"
         android:layout_width="141dp"
         android:layout_height="20dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginRight="35dp"
         android:layout_marginBottom="13dp"
         android:text="Nombre de cascades"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
@@ -79,6 +79,8 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:text="©A.Froehlich/F.Schmidt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
